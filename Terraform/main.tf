@@ -12,8 +12,8 @@ provider "aws" {
 }
 
 module "website-bucket" {
-  source = "git@github.com:bertei/CloudResume-TerraformModules.git//s3"
+  source = "github.com/bertei/CloudResume-TerraformModules.git//s3"
   #source  = "/Users/bernardo.teisceira/Desktop/Personal-repos/CloudResume-TerraformModules/s3"
-  
+
   bucket_name = "bernatei-website"
 }
