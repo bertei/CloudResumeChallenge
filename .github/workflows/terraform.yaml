@@ -16,7 +16,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: ./Terraform/S3/modules-call
+        working-directory: ./Terraform
 
     steps:
       - name: Checkout the repository to the runner
