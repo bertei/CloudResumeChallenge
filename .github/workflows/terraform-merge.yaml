@@ -1,17 +1,13 @@
-name: "Terraform"
+name: "Terraform Deployment"
 
 on:
   push:
     branches:
       - main
-  #pull_request:
-  #  types: [opened, reopened, closed]
 
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  #AWS_REGION: ${{ secrets.AWS_REGION }}
-  #TF_LOG: INFO
 
 jobs:
   terraform:
@@ -32,11 +28,7 @@ jobs:
       - name: Terraform init
         id: init
         run: terraform init
-        #env:
-        #  BUCKET_TF_STATE: ${{ secrets.BUCKET_TF_STATE }}
-        #  AWS_BUCKET_KEY_NAME: ${{ secrets.AWS_BUCKET_KEY_NAME }}
-        #run: terraform init -backend-config="bucket=${BUCKET_TF_STATE}" -backend-config="key=${AWS_BUCKET_KEY_NAME}" -backend-config="region=${AWS_REGION}"
-      
+
       - name: Terraform plan
         id: plan
         run: terraform plan
@@ -44,5 +36,4 @@ jobs:
       
       - name: Terraform apply
         id: apply
-        #if: github.event.pull_request.merged == true
         run: terraform apply --auto-approve -input=false
