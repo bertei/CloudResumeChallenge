@@ -10,9 +10,7 @@ on:
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  AWS_BUCKET_KEY_NAME: ${{ secrets.AWS_BUCKET_KEY_NAME }}
   AWS_REGION: ${{ secrets.AWS_REGION }}
-  BUCKET_TF_STATE: ${{ secrets.BUCKET_TF_STATE }}
   TF_LOG: INFO
 
 jobs:
@@ -34,6 +32,9 @@ jobs:
       - name: Terraform init
         id: init
         #run: terraform init #-backend-config="bucket=$BUCKET_TF_STATE"
+        env:
+          BUCKET_TF_STATE: ${{ secrets.BUCKET_TF_STATE }}
+          AWS_BUCKET_KEY_NAME: ${{ secrets.AWS_BUCKET_KEY_NAME }}
         run: terraform init -backend-config="bucket=${BUCKET_TF_STATE}" -backend-config="key=${AWS_BUCKET_KEY_NAME}" -backend-config="region=${AWS_REGION}"
       
       - name: Terraform plan
@@ -44,4 +45,4 @@ jobs:
       - name: Terraform apply
         id: apply
         #if: github.event.pull_request.merged == true
-        run: terraform apply --auto-approve
+        run: terraform apply --auto-approve -input=false
