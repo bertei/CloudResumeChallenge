@@ -1,7 +1,7 @@
-#Statefile is stored in a manually created bucket for testing purposes.
+##Statefile is stored in a manually created bucket for testing purposes.
 terraform {
   backend "s3" {
-    bucket  = "website-statefiles"
+    #bucket  = "website-statefiles"
     key     = "s3/website/terraform.tfstate"
     region  = "us-east-1"
   }
