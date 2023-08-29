@@ -1,10 +1,11 @@
 ##Statefile is stored in a manually created bucket for testing purposes.
 terraform {
-  backend "s3" {
-    bucket  = "website-statefiles"
-    key     = "terraform.tfstate"
-    region  = "us-east-1"
-  }
+  #backend "s3" {
+  #  bucket  = "website-statefiles"
+  #  key     = "terraform.tfstate"
+  #  region  = "us-east-1"
+  #}
+  backend "s3" {}
 }
 
 provider "aws" {
