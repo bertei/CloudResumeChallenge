@@ -57,9 +57,9 @@ module "website-lambda" {
   ##Variables defined by outputs
   table_arn            = module.website-dynamodb.table_arn
 
-  depends_on = [ 
-    module.website-dynamodb
-  ]
+  #depends_on = [ 
+  #  module.website-dynamodb
+  #]
 }
 
 module "website-apigw" {
@@ -84,3 +84,4 @@ module "website-apigw" {
 #
 #  cdn_name = module.website-cdn.cdn_name
 #}
+
