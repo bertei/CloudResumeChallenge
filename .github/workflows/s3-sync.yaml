@@ -24,7 +24,7 @@ jobs:
       - name: Checkout the repository to the runner
         uses: actions/checkout@v3
       - name: Sync website folder to S3 bucket
-        uses: akejarvis/s3-sync-action@master
+        uses: jakejarvis/s3-sync-action@master
         with:
           args: --follow-symlinks --delete
         env:
