@@ -36,4 +36,5 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           DISTRIBUTION: ${{ secrets.AWS_CDN_DISTRIBUTION }}
           PATHS: '/*'
+          REGION: 'us-east-1'
 
