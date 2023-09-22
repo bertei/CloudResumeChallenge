@@ -13,19 +13,16 @@ provider "aws" {
 
 module "website-bucket" {
   source = "github.com/bertei/CloudResume-TerraformModules.git//s3"
-  #source  = "/Users/bernardo.teisceira/Desktop/Personal-repos/CloudResume-TerraformModules/s3"
 
   bucket_name = "bernatei-website"
 }
 
 module "website-acm-certificate" {
   source = "github.com/bertei/CloudResume-TerraformModules.git//acm"
-  #source = "/Users/bernardo.teisceira/Desktop/Personal-repos/CloudResume-TerraformModules/acm"
 }
 
 module "website-cdn" {
   source = "github.com/bertei/CloudResume-TerraformModules.git//cdn"
-  #source = "/Users/bernardo.teisceira/Desktop/Personal-repos/CloudResume-TerraformModules/cdn"
 
   ##Variables defined by outputs
   domain_name = module.website-bucket.bucket_regional_domain_name
@@ -42,14 +39,12 @@ module "website-cdn" {
 
 module "website-dynamodb" {
   source  = "github.com/bertei/CloudResume-TerraformModules.git//dynamodb"
-  #source = "/Users/bernardo.teisceira/Desktop/Personal-repos/CloudResume-TerraformModules/dynamodb"
 
   table_name = "ViewCounter"
 }
 
 module "website-lambda" {
   source  = "github.com/bertei/CloudResume-TerraformModules.git//lambda"
-  #source = "/Users/bernardo.teisceira/Desktop/Personal-repos/CloudResume-TerraformModules/lambda"
 
   lambda_function_name = "Website-Lambda"
   lambda_role_name     = "ViewCounter-Role"
@@ -64,7 +59,6 @@ module "website-lambda" {
 
 module "website-apigw" {
   source  = "github.com/bertei/CloudResume-TerraformModules.git//apigw"
-  #source = "/Users/bernardo.teisceira/Desktop/Personal-repos/CloudResume-TerraformModules/apigw"
 
   apigw_name  = "Website-API"
 
