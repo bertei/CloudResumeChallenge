@@ -30,6 +30,18 @@ module "website-cdn" {
   bucket_arn  = module.website-bucket.bucket_arn
   acm_arn     = module.website-acm-certificate.acm_arn
 
+  custom_error_response = [
+    {
+      error_code         = 403
+      response_code      = 403
+      response_page_path = "/error.html"
+    },
+    {
+      error_code         = 404
+      response_code      = 404
+      response_page_path = "/error.html"
+    }
+  ]
 
   depends_on = [
     module.website-bucket,
@@ -51,10 +63,6 @@ module "website-lambda" {
 
   ##Variables defined by outputs
   table_arn            = module.website-dynamodb.table_arn
-
-  #depends_on = [ 
-  #  module.website-dynamodb
-  #]
 }
 
 module "website-apigw" {
