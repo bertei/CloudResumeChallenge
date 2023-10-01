@@ -43,10 +43,10 @@ module "website-cdn" {
     }
   ]
 
-  #depends_on = [
-  #  module.website-bucket,
-  #  module.website-acm-certificate
-  #]
+  depends_on = [
+    module.website-bucket,
+    module.website-acm-certificate
+  ]
 }
 
 module "website-dynamodb" {
