@@ -23,6 +23,10 @@ output "cdn_domain_name" {
   value = module.website-cdn.cdn_name
 }
 
+output "cdn_aliases" {
+  value = module.website-cdn.cdn_aliases
+}
+
 ## DynamoDB Outputs ##
 output "table_arn" {
   value = module.website-dynamodb

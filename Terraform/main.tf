@@ -29,7 +29,9 @@ module "website-cdn" {
   bucket_id   = module.website-bucket.bucket_id
   bucket_arn  = module.website-bucket.bucket_arn
   acm_arn     = module.website-acm-certificate.acm_arn
-
+  aliases     = [
+     "resume.bernatei.com"
+  ]
   custom_error_response = [
     {
       error_code         = 403
@@ -51,7 +53,6 @@ module "website-cdn" {
 
 module "website-dynamodb" {
   source  = "github.com/bertei/CloudResume-TerraformModules.git//dynamodb"
-
   table_name = "ViewCounter"
 }
 
